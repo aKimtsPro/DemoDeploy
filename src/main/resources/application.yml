@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: 'dev'
+---
+spring:
+  profiles: 'dev'
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5434/DeployDB
+    username: user
+    password: pass
+---
+spring:
+  profiles: 'prod'
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:porgresql://${DEPLOY_DB_HOST}:${DEPLOY_DB_PORT}/${DEPLOY_DB_NAME}
+    username: ${DEPLOY_DB_USER}
+    password: ${DEPLOY_DB_PASSWORD}
